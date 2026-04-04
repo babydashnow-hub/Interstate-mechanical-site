@@ -1,0 +1,493 @@
+<!-- ═══════════════════════════════════════════════════════════════════
+     INTERSTATE MECHANICAL — By the Numbers Stats Bar
+     Premium Stats · Bold Typography · Elementor Ready
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+.imr-stats,
+.imr-stats *,
+.imr-stats *::before,
+.imr-stats *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.imr-stats {
+  position: relative;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+  padding: clamp(64px, 7vw, 96px) 0;
+  background: #040a14;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+}
+
+/* ── Top & bottom edge lines ── */
+.imr-stats::before,
+.imr-stats::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  pointer-events: none;
+}
+
+.imr-stats::before {
+  top: 0;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(47,109,246,.12) 20%,
+    rgba(255,255,255,.08) 50%,
+    rgba(255,122,0,.12) 80%,
+    transparent
+  );
+}
+
+.imr-stats::after {
+  bottom: 0;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,122,0,.10) 20%,
+    rgba(255,255,255,.06) 50%,
+    rgba(47,109,246,.10) 80%,
+    transparent
+  );
+}
+
+/* ── Atmosphere ── */
+.imr-stats__atmos {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 40% 80% at 15% 50%, rgba(47,109,246,.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 80% at 85% 50%, rgba(255,122,0,.05) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 100% at 50% 50%, rgba(255,255,255,.012) 0%, transparent 70%);
+}
+
+/* Subtle noise grain overlay */
+.imr-stats__grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+.imr-stats__wrap {
+  position: relative;
+  z-index: 2;
+  width: min(1400px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* ── Section label ── */
+.imr-stats__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: clamp(36px, 4.5vw, 56px);
+  text-align: center;
+}
+
+.imr-stats__label-line {
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.10));
+}
+
+.imr-stats__label-line:last-child {
+  background: linear-gradient(90deg, rgba(255,255,255,.10), transparent);
+}
+
+.imr-stats__label-text {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  white-space: nowrap;
+}
+
+/* ── Stats grid ── */
+.imr-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+/* ── Individual stat ── */
+.imr-stats__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(24px, 3vw, 40px) clamp(16px, 2vw, 32px);
+}
+
+/* Vertical dividers between stats */
+.imr-stats__item + .imr-stats__item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 1px;
+  background: linear-gradient(180deg,
+    transparent,
+    rgba(255,255,255,.08) 30%,
+    rgba(255,255,255,.10) 50%,
+    rgba(255,255,255,.08) 70%,
+    transparent
+  );
+}
+
+/* Stat icon */
+.imr-stats__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,.06);
+  transition: transform .3s ease, border-color .3s ease;
+}
+
+.imr-stats__item:hover .imr-stats__icon {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.12);
+}
+
+.imr-stats__icon svg {
+  display: block;
+}
+
+.imr-stats__icon--reviews {
+  background: linear-gradient(135deg, rgba(255,122,0,.12), rgba(255,122,0,.04));
+  color: #fb923c;
+}
+
+.imr-stats__icon--rating {
+  background: linear-gradient(135deg, rgba(255,184,77,.12), rgba(255,184,77,.04));
+  color: #ffb84d;
+}
+
+.imr-stats__icon--years {
+  background: linear-gradient(135deg, rgba(47,109,246,.12), rgba(47,109,246,.04));
+  color: #60a5fa;
+}
+
+.imr-stats__icon--speed {
+  background: linear-gradient(135deg, rgba(52,211,153,.12), rgba(52,211,153,.04));
+  color: #6ee7b7;
+}
+
+/* Stat number */
+.imr-stats__number {
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: .88;
+  letter-spacing: -.06em;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 10px;
+  transition: transform .3s ease;
+}
+
+.imr-stats__item:hover .imr-stats__number {
+  transform: scale(1.04);
+}
+
+/* Accent color on the suffix */
+.imr-stats__number-suffix {
+  font-size: .55em;
+  font-weight: 800;
+  vertical-align: top;
+  position: relative;
+  top: .08em;
+  margin-left: .02em;
+}
+
+.imr-stats__number-suffix--orange {
+  color: #ff8c1a;
+}
+
+.imr-stats__number-suffix--gold {
+  color: #ffb84d;
+}
+
+.imr-stats__number-suffix--blue {
+  color: #60a5fa;
+}
+
+.imr-stats__number-suffix--green {
+  color: #6ee7b7;
+}
+
+/* Star character in the rating stat */
+.imr-stats__number-star {
+  color: #ffb84d;
+  font-size: .65em;
+  margin-left: .03em;
+}
+
+/* Stat title */
+.imr-stats__title {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: rgba(255,255,255,.80);
+  letter-spacing: -.01em;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+/* Stat description */
+.imr-stats__desc {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,.38);
+  line-height: 1.55;
+  max-width: 22ch;
+}
+
+/* ── Bottom tagline ── */
+.imr-stats__tagline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: clamp(36px, 4.5vw, 56px);
+  text-align: center;
+}
+
+.imr-stats__tagline-line {
+  flex: 1;
+  max-width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.07));
+}
+
+.imr-stats__tagline-line:last-child {
+  background: linear-gradient(90deg, rgba(255,255,255,.07), transparent);
+}
+
+.imr-stats__tagline-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,.30);
+  letter-spacing: -.01em;
+  white-space: nowrap;
+}
+
+.imr-stats__tagline-text a {
+  color: rgba(255,122,0,.65);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color .2s ease;
+}
+
+.imr-stats__tagline-text a:hover {
+  color: rgba(255,122,0,.90);
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — Tablet
+   ═══════════════════════════════════════════ */
+@media (max-width: 1080px) {
+  .imr-stats__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+
+  .imr-stats__desc {
+    max-width: 20ch;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — Mobile (2x2 grid)
+   ═══════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .imr-stats {
+    padding: clamp(48px, 7vw, 72px) 0;
+  }
+
+  .imr-stats__wrap {
+    width: min(100%, calc(100% - 28px));
+  }
+
+  .imr-stats__label {
+    margin-bottom: clamp(28px, 4vw, 40px);
+  }
+
+  .imr-stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  /* Remove all vertical dividers on mobile */
+  .imr-stats__item + .imr-stats__item::before {
+    display: none;
+  }
+
+  /* Rebuild dividers for 2x2 layout */
+  /* Vertical divider between columns */
+  .imr-stats__grid::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 8%;
+    bottom: 8%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,.08) 25%, rgba(255,255,255,.08) 75%, transparent);
+    z-index: 3;
+  }
+
+  /* Horizontal divider between rows */
+  .imr-stats__grid::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.08) 25%, rgba(255,255,255,.08) 75%, transparent);
+    z-index: 3;
+  }
+
+  .imr-stats__item {
+    padding: clamp(22px, 4vw, 32px) clamp(12px, 3vw, 20px);
+  }
+
+  .imr-stats__number {
+    font-size: clamp(36px, 10vw, 52px);
+    margin-bottom: 8px;
+  }
+
+  .imr-stats__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    margin-bottom: 14px;
+  }
+
+  .imr-stats__title {
+    font-size: 13px;
+  }
+
+  .imr-stats__desc {
+    font-size: 12px;
+    max-width: 18ch;
+  }
+
+  .imr-stats__tagline {
+    margin-top: clamp(28px, 4vw, 40px);
+  }
+
+  .imr-stats__tagline-text {
+    font-size: 12px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — Small phones
+   ═══════════════════════════════════════════ */
+@media (max-width: 380px) {
+  .imr-stats__number {
+    font-size: 34px;
+  }
+
+  .imr-stats__item {
+    padding: 18px 10px;
+  }
+}
+</style>
+
+<section class="imr-stats">
+
+  <div class="imr-stats__atmos" aria-hidden="true"></div>
+  <div class="imr-stats__grain" aria-hidden="true"></div>
+
+  <div class="imr-stats__wrap">
+
+    <!-- Section label -->
+    <div class="imr-stats__label">
+      <span class="imr-stats__label-line" aria-hidden="true"></span>
+      <span class="imr-stats__label-text">By the Numbers</span>
+      <span class="imr-stats__label-line" aria-hidden="true"></span>
+    </div>
+
+    <!-- Stats grid -->
+    <div class="imr-stats__grid">
+
+      <!-- Stat 1 — Reviews -->
+      <div class="imr-stats__item">
+        <div class="imr-stats__icon imr-stats__icon--reviews">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="imr-stats__number">180<span class="imr-stats__number-suffix imr-stats__number-suffix--orange">+</span></div>
+        <div class="imr-stats__title">Verified Reviews</div>
+        <div class="imr-stats__desc">From real Florida homeowners &amp; businesses</div>
+      </div>
+
+      <!-- Stat 2 — Rating -->
+      <div class="imr-stats__item">
+        <div class="imr-stats__icon imr-stats__icon--rating">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="imr-stats__number">4.5<span class="imr-stats__number-star">★</span></div>
+        <div class="imr-stats__title">Google Rating</div>
+        <div class="imr-stats__desc">Consistent 5-star feedback across services</div>
+      </div>
+
+      <!-- Stat 3 — Years -->
+      <div class="imr-stats__item">
+        <div class="imr-stats__icon imr-stats__icon--years">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="imr-stats__number">12<span class="imr-stats__number-suffix imr-stats__number-suffix--blue">+</span></div>
+        <div class="imr-stats__title">Years in Business</div>
+        <div class="imr-stats__desc">Serving South Florida since day one</div>
+      </div>
+
+      <!-- Stat 4 — Same-Day -->
+      <div class="imr-stats__item">
+        <div class="imr-stats__icon imr-stats__icon--speed">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="imr-stats__number">Same<span class="imr-stats__number-suffix imr-stats__number-suffix--green">Day</span></div>
+        <div class="imr-stats__title">Response Time</div>
+        <div class="imr-stats__desc">Emergency calls answered &amp; dispatched fast</div>
+      </div>
+
+    </div>
+
+    <!-- Bottom tagline -->
+    <div class="imr-stats__tagline">
+      <span class="imr-stats__tagline-line" aria-hidden="true"></span>
+      <span class="imr-stats__tagline-text">Numbers built on trust, not marketing — <a href="#contact">see for yourself</a></span>
+      <span class="imr-stats__tagline-line" aria-hidden="true"></span>
+    </div>
+
+  </div>
+
+</section>

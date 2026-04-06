@@ -1,0 +1,251 @@
+/* ============================================
+   BabyDashNow™ — Hero Section
+   Direction: Calm Domestic Relief
+   ============================================ */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Palette */
+  --color-bg: #F7F5F2;
+  --color-text: #2C2C2C;
+  --color-text-soft: #6B6560;
+  --color-accent: #3D5A47;
+  --color-accent-hover: #334D3C;
+  --color-overlay: rgba(247, 245, 242, 0.88);
+
+  /* Type scale */
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+
+/* --- Hero --- */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+
+/* --- Image Layer --- */
+.hero__image-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__image-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+}
+
+/*
+ * Placeholder simulates the warm nighttime living room image.
+ * Replace with a real photograph when available.
+ */
+.hero__image-placeholder {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(
+      ellipse 60% 80% at 70% 50%,
+      #D4A96A 0%,
+      #8B7355 30%,
+      #4A3F35 60%,
+      #2A2420 100%
+    );
+}
+
+
+/* --- Content Panel --- */
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 540px;
+  margin-left: clamp(40px, 8vw, 120px);
+  padding: var(--space-xl) var(--space-lg);
+  background: var(--color-overlay);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+}
+
+
+/* --- Eyebrow --- */
+.hero__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-md);
+}
+
+
+/* --- Headline --- */
+.hero__headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+
+/* --- Subline --- */
+.hero__subline {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--color-text-soft);
+  margin-bottom: var(--space-lg);
+}
+
+
+/* --- CTA Button --- */
+.hero__cta {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  background-color: var(--color-accent);
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  margin-bottom: var(--space-sm);
+}
+
+.hero__cta:hover {
+  background-color: var(--color-accent-hover);
+  transform: scale(1.02);
+}
+
+.hero__cta:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+
+/* --- Delivery Note --- */
+.hero__delivery-note {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--color-text-soft);
+  opacity: 0.8;
+}
+
+
+/* --- Desktop line break helper --- */
+.desktop-only {
+  display: inline;
+}
+
+
+/* ============================================
+   Responsive — Tablet
+   ============================================ */
+@media (max-width: 1024px) {
+  .hero__content {
+    max-width: 480px;
+    margin-left: clamp(24px, 5vw, 60px);
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .hero__headline {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  }
+}
+
+
+/* ============================================
+   Responsive — Mobile
+   ============================================ */
+@media (max-width: 680px) {
+  .hero {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .hero__image-layer {
+    position: relative;
+    height: 50vh;
+    height: 50svh;
+  }
+
+  .hero__image-layer img {
+    object-position: center right;
+  }
+
+  .hero__content {
+    max-width: 100%;
+    margin: 0;
+    padding: var(--space-lg) var(--space-md);
+    background: var(--color-bg);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 0;
+  }
+
+  .hero__headline {
+    font-size: 1.75rem;
+  }
+
+  .hero__subline {
+    font-size: 1rem;
+  }
+
+  .hero__cta {
+    display: block;
+    text-align: center;
+    padding: 16px 24px;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+}
+
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hero__cta {
+    transition: none;
+  }
+}

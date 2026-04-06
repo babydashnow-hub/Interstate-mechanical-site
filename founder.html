@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BabyDashNow — Founder Section Preview</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
+
+    :root {
+      --hero-bg:      #F7F5F2;
+      --section-bg:   #F7F5F2;
+      --ink:          #1C1B18;
+      --body-text:    #5F5E5A;
+      --micro-text:   #888780;
+      --divider:      #E8E5E0;
+      --green-dot:    #3B6D11;
+      --green-bg:     #EAF3DE;
+      --green-text:   #27500A;
+      --pill-border:  #C4C1BA;
+      --font:         'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    body {
+      background: var(--hero-bg);
+      font-family: var(--font);
+    }
+
+    /* ─── FOUNDER SECTION ────────────────────────────────────────── */
+    .bdn-founder {
+      background: var(--section-bg);
+      border-top: 0.5px solid var(--divider);
+      border-bottom: 0.5px solid var(--divider);
+      padding: 72px 72px;
+    }
+
+    /* Inner card lifts slightly for depth without harsh white break */
+    .bdn-founder__inner-card {
+      background: #FFFFFF;
+      border: 0.5px solid var(--divider);
+      border-radius: 20px;
+      padding: 52px 56px;
+    }
+
+    .bdn-founder__inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    /* ── LEFT: Photo + identity ──────────────────────────────────── */
+    .bdn-founder__identity {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .bdn-founder__photo-wrap {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--hero-bg);
+      outline: 1px solid var(--divider);
+      flex-shrink: 0;
+    }
+
+    .bdn-founder__photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* Fallback avatar */
+    .bdn-founder__photo-fallback {
+      width: 100%;
+      height: 100%;
+      background: #E8E4DE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      font-weight: 500;
+      color: var(--body-text);
+      letter-spacing: -0.02em;
+    }
+
+    .bdn-founder__name {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .bdn-founder__role {
+      font-size: 13px;
+      color: var(--micro-text);
+      font-weight: 400;
+      margin-top: -10px;
+    }
+
+    .bdn-founder__location-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--green-bg);
+      border-radius: 999px;
+      padding: 5px 12px;
+    }
+
+    .bdn-founder__location-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green-dot);
+      flex-shrink: 0;
+    }
+
+    .bdn-founder__location-text {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--green-text);
+    }
+
+    .bdn-founder__contact {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .bdn-founder__contact-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--micro-text);
+      font-weight: 500;
+    }
+
+    .bdn-founder__phone {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .bdn-founder__phone:hover {
+      color: var(--green-dot);
+    }
+
+    .bdn-founder__phone-sub {
+      font-size: 11px;
+      color: var(--micro-text);
+      margin-top: -2px;
+    }
+
+    /* ── RIGHT: Story ────────────────────────────────────────────── */
+    .bdn-founder__story {
+      padding-top: 8px;
+    }
+
+    .bdn-founder__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 20px;
+    }
+
+    .bdn-founder__eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green-dot);
+      flex-shrink: 0;
+    }
+
+    .bdn-founder__eyebrow-text {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--micro-text);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* The pull quote — the emotional hook */
+    .bdn-founder__quote {
+      font-family: var(--font);
+      font-size: 26px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.45;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+      max-width: 640px;
+      border-left: 2px solid var(--divider);
+      padding-left: 24px;
+    }
+
+    /* The story body */
+    .bdn-founder__body {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 600px;
+    }
+
+    .bdn-founder__body p {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--body-text);
+    }
+
+    .bdn-founder__body p strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* Signature line */
+    .bdn-founder__sig {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 0.5px solid var(--divider);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .bdn-founder__sig-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1px solid var(--divider);
+    }
+
+    .bdn-founder__sig-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .bdn-founder__sig-fallback {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #E8E4DE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--body-text);
+      flex-shrink: 0;
+    }
+
+    .bdn-founder__sig-text {
+      font-size: 13px;
+      color: var(--body-text);
+      line-height: 1.5;
+    }
+
+    .bdn-founder__sig-name {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .bdn-founder {
+        padding: 56px 40px;
+      }
+      .bdn-founder__inner-card {
+        padding: 36px 36px;
+      }
+      .bdn-founder__inner {
+        grid-template-columns: 220px 1fr;
+        gap: 40px;
+      }
+      .bdn-founder__photo-wrap {
+        width: 160px;
+        height: 160px;
+      }
+      .bdn-founder__quote {
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .bdn-founder {
+        padding: 24px 16px;
+      }
+      .bdn-founder__inner-card {
+        padding: 24px 20px;
+        border-radius: 14px;
+      }
+
+      .bdn-founder__inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .bdn-founder__identity {
+        flex-direction: row;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .bdn-founder__photo-wrap {
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+      }
+
+      .bdn-founder__identity-text {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .bdn-founder__name { font-size: 15px; }
+      .bdn-founder__role { margin-top: 0; font-size: 12px; }
+
+      .bdn-founder__contact {
+        display: none; /* shown in story section on mobile */
+      }
+
+      .bdn-founder__quote {
+        font-size: 18px;
+        padding-left: 16px;
+        margin-bottom: 20px;
+      }
+
+      .bdn-founder__body p {
+        font-size: 14px;
+      }
+
+      .bdn-founder__sig {
+        margin-top: 20px;
+        padding-top: 18px;
+      }
+
+      /* Show contact inline on mobile */
+      .bdn-founder__mobile-contact {
+        display: flex !important;
+      }
+    }
+
+    .bdn-founder__mobile-contact {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── SECTION 2: FOUNDER TRUST BLOCK ──────────────────────────── -->
+<section class="bdn-founder" aria-label="About the founder">
+  <div class="bdn-founder__inner-card">
+    <div class="bdn-founder__inner">
+
+      <!-- LEFT: Photo + identity -->
+      <div class="bdn-founder__identity">
+
+        <div class="bdn-founder__photo-wrap">
+          <img
+            class="bdn-founder__photo"
+            src="https://babydashnow.com/wp-content/uploads/2026/04/mackadeley-louis-founder.jpg"
+            alt="Mackadeley Louis, fondateur de BabyDashNow, père à Stamford CT"
+            width="400"
+            height="400"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="bdn-founder__photo-fallback" style="display:none;" aria-hidden="true">ML</div>
+        </div>
+
+        <div class="bdn-founder__identity-text">
+          <div class="bdn-founder__name">Mackadeley Louis</div>
+          <div class="bdn-founder__role">Founder · Stamford dad</div>
+
+          <div class="bdn-founder__location-pill" style="margin-top: 8px;">
+            <span class="bdn-founder__location-dot" aria-hidden="true"></span>
+            <span class="bdn-founder__location-text">Stamford, CT</span>
+          </div>
+        </div>
+
+        <!-- Contact block (desktop) -->
+        <div class="bdn-founder__contact">
+          <span class="bdn-founder__contact-label">Reach me directly</span>
+          <a href="sms:+12032239046" class="bdn-founder__phone">(203) 223-9046</a>
+          <span class="bdn-founder__phone-sub">Text or call · I reply personally</span>
+        </div>
+
+      </div><!-- /.bdn-founder__identity -->
+
+      <!-- RIGHT: Story -->
+      <div class="bdn-founder__story">
+
+        <div class="bdn-founder__eyebrow">
+          <span class="bdn-founder__eyebrow-dot" aria-hidden="true"></span>
+          <span class="bdn-founder__eyebrow-text">Why BabyDashNow exists</span>
+        </div>
+
+        <!-- The emotional pull quote -->
+        <blockquote class="bdn-founder__quote">
+          "It was 10 PM. My son wouldn't stop crying. We had no diapers,
+          no formula — and not a single store open in Stamford."
+        </blockquote>
+
+        <!-- The full story — specific, real, human -->
+        <div class="bdn-founder__body">
+
+          <p>
+            Last year, a few weeks after my son was born, he refused to nurse
+            one night — and we had run out of both diapers and formula at the
+            same time. I drove around Stamford for over an hour after 10 PM
+            looking for anything open. Nothing.
+          </p>
+
+          <p>
+            I sat in that car feeling helpless in a way I hadn't expected.
+            And then I thought — <strong>if I'm going through this, every parent
+            in this city goes through this.</strong>
+          </p>
+
+          <p>
+            That night is why BabyDashNow exists. Not as a company — as a
+            neighbor who shows up. I built this so no parent in Stamford,
+            Darien, Norwalk, or Greenwich ever has to make that drive again.
+          </p>
+
+        </div>
+
+        <!-- Signature -->
+        <div class="bdn-founder__sig">
+          <div class="bdn-founder__sig-avatar">
+            <img
+              src="https://babydashnow.com/wp-content/uploads/2026/04/mackadeley-louis-founder.jpg"
+              alt="Mackadeley Louis"
+              width="40"
+              height="40"
+              loading="lazy"
+              onerror="this.style.display='none'; this.parentElement.classList.add('bdn-founder__sig-fallback'); this.parentElement.textContent='ML';"
+            >
+          </div>
+          <div class="bdn-founder__sig-text">
+            <span class="bdn-founder__sig-name">Mackadeley Louis</span><br>
+            Founder, BabyDashNow™ · Father of one · Stamford, CT<br>
+            <a href="sms:+12032239046" style="color: #3B6D11; text-decoration: none; font-size: 13px;">
+              Text me: (203) 223-9046
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact visible on mobile only -->
+        <div class="bdn-founder__mobile-contact">
+          <span style="font-size: 11px; color: #888780; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500;">Reach me directly</span>
+          <a href="sms:+12032239046" style="font-size: 15px; font-weight: 500; color: #1C1B18; text-decoration: none;">(203) 223-9046</a>
+          <span style="font-size: 11px; color: #888780;">Text or call · I reply personally</span>
+        </div>
+
+      </div><!-- /.bdn-founder__story -->
+
+    </div><!-- /.bdn-founder__inner -->
+  </div><!-- /.bdn-founder__inner-card -->
+</section>
+
+</body>
+</html>
